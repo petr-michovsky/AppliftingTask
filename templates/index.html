@@ -64,12 +64,6 @@
             "Content-Type": "application/json"  // Default for POST, PUT, PATCH
         };
 
-        // Automatically add Authorization header for offers microservice
-        if (url.includes("offers")) {
-            const accessToken = "your-access-token-here";  // Retrieve this securely in a real application
-            headers["Authorization"] = `Bearer ${accessToken}`;
-        }
-
         let body = null;
         if (["POST", "PUT", "PATCH"].includes(method)) {
             try {
