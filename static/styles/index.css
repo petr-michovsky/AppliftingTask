@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 2rem;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1 {
+    color: #007acc;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header a:hover {
+    color: green;
+}
+
+.api-explorer-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1em;
+}
+
+.url-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.url-container label {
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.url-container select {
+    font-size: 1em;
+    padding: 1em;
+}
+
+.http-method-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.http-method-container label {
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.http-method-container select {
+    font-size: 1em;
+    padding: 1em;
+}
+
+.body-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.body-container label {
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.body-container textarea {
+    font-size: 1em;
+    padding: 1em;
+    resize: vertical;
+}
+
+.send-request-btn-container {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+}
+
+.send-request-btn-container button {
+    background-color: #007acc;
+    color: #f4f4f4;
+    font-size: 1em;
+    padding: 1em;
+    border-radius: 15px;
+    border: none;
+}
+
+.send-request-btn-container button:hover {
+    background-color: #63beff;
+    cursor: pointer;
+}
+
+.response-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.response-container pre {
+    font-size: 1.2em;
+    color: green;
+}

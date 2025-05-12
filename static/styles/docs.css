@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 2rem;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1 {
+    color: #007acc;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header a:hover {
+    color: green;
+}
+
+.get-products-container {
+    padding: 2em;
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
+}
+
+.create-product-container {
+    padding: 2em;
+    border-bottom: 1px solid gray;
+}
+
+.delete-product-container {
+    padding: 2em;
+    border-bottom: 1px solid gray;
+}
+
+.update-product-container {
+    padding: 2em;
+    border-bottom: 1px solid gray;
+}
+
+.get-offers-container {
+    padding: 2em;
+    border-bottom: 1px solid gray;
+}

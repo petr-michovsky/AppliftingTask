@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Documentation - Applifting Python Task</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/docs.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <h1>Applifting Python Task API Explorer</h1>
+            <a href="/">API Explorer</a>
+        </div>
+
+        <p>Explore the available API endpoints and their functionalities below.</p>
+
+        <section>
+            <h2>Getting Started</h2>
+            <p>To get started, select an API endpoint. The available options are:</p>
+            <ul>
+                <li><code>/get-products</code></li>
+                <li><code>/create-product</code></li>
+                <li><code>/delete-product</code></li>
+                <li><code>/update-product</code></li>
+                <li><code>/get-offers</code></li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Request Methods</h3>
+            <p>For each endpoint, you need to select the appropriate HTTP method. Below are the available methods for each endpoint:</p>
+            <ul>
+                <li><code>/get-products</code>: <strong>GET</strong></li>
+                <li><code>/create-product</code>: <strong>POST</strong></li>
+                <li><code>/delete-product</code>: <strong>DELETE</strong></li>
+                <li><code>/update-product</code>: <strong>PUT</strong></li>
+                <li><code>/get-offers</code>: <strong>POST</strong></li>
+            </ul>
+        </section>
+
+        <div class="get-products-container">
+            <section>
+                <h4>/get-products Endpoint</h4>
+                <p>This endpoint returns a list of all products in the database, along with the associated offers for each product.</p>
+                <h5>Example Response</h5>
+                <pre><code>
+                    [
+                        {
+                            "description": "test desc",
+                            "id": "10cb8f1f-dc8e-49dd-8a69-63aeec326866",
+                            "name": "test",
+                            "offers": [
+                                {
+                                "id": "0ab364d2-8c4d-35fb-9109-15451e9d9034",
+                                "items_in_stock": 179,
+                                "price": 65826,
+                                "product_id": "10cb8f1f-dc8e-49dd-8a69-63aeec326866"
+                                },
+                                {
+                                "id": "0fc090f8-a6bc-ab12-ef5c-35cb07a1dd72",
+                                "items_in_stock": 595,
+                                "price": 61902,
+                                "product_id": "10cb8f1f-dc8e-49dd-8a69-63aeec326866"
+                                },
+                                ...
+                            ]
+                        }
+                    ]
+                </code></pre>
+                <p>Offers for each product are updated once every 5 seconds. Out-of-stock offers are also deleted once every 5 seconds.</p>
+            </section>
+        </div>
+
+
+        <div class="create-product-container">
+            <section>
+                <h4>/create-product Endpoint</h4>
+                <p>This endpoint allows you to create a new product and register it using the Applifting microservice.</p>
+                <p>The request must include a JSON body with the product's <strong>name</strong> and <strong>description</strong>.</p>
+                <h5>Example Request Body</h5>
+                <pre><code>
+                    {
+                      "name": "Product name here",
+                      "description": "Product description here"
+                    }
+                </code></pre>
+                <h5>Example Response</h5>
+                <p>If the product is created successfully, the response will look like this:</p>
+                <pre><code>
+                    {
+                      "description": "Product description here",
+                      "message": "Product created and registered successfully",
+                      "name": "Product name here",
+                      "product_id": "2f865ad9-c18d-48e9-811d-9fc0622a5006"
+                    }
+                </code></pre>
+                <p>The <strong>product_id</strong> is a unique identifier assigned to the newly created product.</p>
+            </section>
+        </div>
+
+
+        <div class="delete-product-container">
+            <section>
+                <h4>/delete-product Endpoint</h4>
+                <p>This endpoint allows you to delete a product along with all its associated offers from the Applifting microservice.</p>
+                <p>To delete a product, the request must include a JSON body containing the product's <strong>product_id</strong>.</p>
+
+                <h5>Example Request Body</h5>
+                <pre><code>
+                    {
+                      "product_id": "2f865ad9-c18d-48e9-811d-9fc0622a5006"
+                    }
+                </code></pre>
+
+                <h5>Example Response</h5>
+                <p>If the product is successfully deleted, the response will look like this:</p>
+                <pre><code>
+                    {
+                      "message": "Product 2f865ad9-c18d-48e9-811d-9fc0622a5006 deleted successfully"
+                    }
+                </code></pre>
+
+                <p>The response includes a confirmation message, indicating that the specified product has been deleted successfully.</p>
+            </section>
+        </div>
+
+        <div class="update-product-container">
+            <section>
+                <h4>/update-product Endpoint</h4>
+                <p>This endpoint allows you to update a product's <strong>name</strong> or <strong>description</strong>.</p>
+
+                <p><strong>Note:</strong> To update a product, the request must include a JSON body containing the product's <strong>product_id</strong>, along with any fields you wish to update (either <strong>name</strong>, <strong>description</strong>, or both). These fields are optional and can be provided individually.</p>
+
+                <h5>Example Request Body</h5>
+                <pre><code>
+                    {
+                      "product_id": "2f865ad9-c18d-48e9-811d-9fc0622a5006",
+                      "name": "Updated Product Name",
+                      "description": "Updated product description"
+                    }
+                </code></pre>
+
+                <h5>Example Response</h5>
+                <p>If the product is successfully updated, the response will look like this:</p>
+                <pre><code>
+                    {
+                      "message": "Product updated successfully",
+                      "product_id": "2f865ad9-c18d-48e9-811d-9fc0622a5006",
+                      "name": "Updated Product Name",
+                      "description": "Updated product description"
+                    }
+                </code></pre>
+
+                <p>The response will include a confirmation message, along with the updated product details, indicating the successful update.</p>
+            </section>
+        </div>
+
+        <div class="get-offers-container">
+            <section>
+                <h4><code>/get-offers</code> Endpoint</h4>
+                <p>
+                    This endpoint returns all available offers for a specific product. Only offers with items in stock will be included in the response.
+                </p>
+
+                <p><strong>Note:</strong> The request must include a JSON body containing the product’s <strong>product_id</strong>.</p>
+
+                <h5>Example Request Body</h5>
+                <pre><code>
+                    {
+                        "product_id": "10cb8f1fdc8e49dd8a6963aeec326866"
+                    }
+                </code></pre>
+
+                <h5>Example Response</h5>
+                <p>If the request is valid and the product exists, the response will look like this:</p>
+                <pre><code>
+                    {
+                        "offers": [
+                            {
+                                "id": "31db745e-ef62-805c-d8a4-a97f52d0ee19",
+                                "items_in_stock": 371,
+                                "price": 62172,
+                                "product_id": "10cb8f1f-dc8e-49dd-8a69-63aeec326866"
+                            },
+                            {
+                                "id": "0ab364d2-8c4d-35fb-9109-15451e9d9034",
+                                "items_in_stock": 162,
+                                "price": 65193,
+                                "product_id": "10cb8f1f-dc8e-49dd-8a69-63aeec326866"
+                            },
+                                ...
+                        ]
+                    }
+                </code></pre>
+
+                <p class="note">Offers with <strong>items_in_stock</strong> equal to <strong>0</strong> are automatically excluded from the results.</p>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

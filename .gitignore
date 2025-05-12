@@ -1,0 +1,4 @@
+.env
+auth_token.json
+/instance/
+/.venv/
