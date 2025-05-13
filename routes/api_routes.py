@@ -23,14 +23,15 @@ def create_product():
         description=data['description'],
     )
 
-    db.session.add(product)
-    db.session.commit()
-
     # Register the product in the API
     try:
         response = register_product(product)
 
         if response.status_code == 201:
+            # Only add the product to the database after successful registration
+            db.session.add(product)
+            db.session.commit()
+
             return jsonify({
                 'message': 'Product created and registered successfully',
                 'product_id': str(product.id),
